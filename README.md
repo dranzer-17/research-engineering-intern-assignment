@@ -1,36 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Reddify - Reddit Post Visualizer
 
-## Getting Started
+## Overview
 
-First, run the development server:
+Reddify is a Reddit post visualizer designed to analyze and display Reddit posts from a dataset provided by SimPPL. It integrates machine learning models for sentiment analysis, subreddit prediction, and query-based information retrieval. The project serves as a demonstration of AI-powered content analysis and visualization.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 🔹 **Reddit Post Visualization**
+- Displays Reddit posts in an interactive UI built with **Next.js**, **Tailwind CSS**, and **shadcn/ui**.
+- Uses **Chakra UI** components for a sleek and responsive design.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 🔹 **AI-Powered Query System**
+- Integrates **Mistral v3** and `sentence-transformers/all-MiniLM-L6-v2` from Hugging Face.
+- Implements **Retrieval-Augmented Generation (RAG)** by storing the dataset in **ChromaDB** for efficient vector-based search.
+- Allows users to ask queries about the dataset and receive AI-generated responses.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 🔹 **Sentiment Analysis**
+- Uses a **Keras LSTM Sequential Model** to predict sentiment (positive, negative, neutral).
+- Trained on a **1.6 million-row dataset**.
+- Model implementation: [Sentiment Analysis Colab](https://colab.research.google.com/drive/1Wqnykr7TNPQjeYZbzRRcuqGt8dbiXtUh?usp=drive_link).
 
-## Learn More
+### 🔹 **Subreddit Prediction**
+- Uses **TF-IDF Vectorizer** and **Logistic Regression** to predict subreddit categories.
+- Works even when subreddit labels are missing.
+- Model implementation: [Subreddit Predictor Colab](https://colab.research.google.com/drive/1mENz41DPgmBWzghppvJPutx8mcC3w5SZ?usp=sharing).
 
-To learn more about Next.js, take a look at the following resources:
+### 🔹 **Planned Features**
+- **Create Post Feature:** Allows users to submit new posts, which will be analyzed and assigned a predicted subreddit.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Installation & Setup
 
-## Deploy on Vercel
+### Prerequisites
+- **Node.js** (>= 16.x)
+- **Python 3.x**
+- **ChromaDB**
+- **Hugging Face API key** (for transformer models)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Steps
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-repo/reddify.git
+   cd reddify
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables**
+   Create a `.env` file and add:
+   ```
+   NEXT_PUBLIC_HF_API_KEY=your_huggingface_api_key
+   CHROMADB_PATH=./data/chroma
+   ```
+
+4. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+
+5. **Start the backend**
+   ```bash
+   python backend/server.py
+   ```
+
+---
+
+## Technologies Used
+
+- **Frontend:** Next.js, Tailwind CSS, shadcn/ui
+- **Backend:** Python, Flask/FastAPI
+- **Machine Learning:** TensorFlow, Keras, Scikit-learn, Hugging Face Transformers
+- **Database:** ChromaDB (Vector Database)
+- **Deployment:** Render (for backend)
+
+---
+
+## Contributing
+
+Feel free to fork the project, submit issues, or create pull requests.
+
+---
+
+## License
+
+This project is open-source and available under the **MIT License**.
