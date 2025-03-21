@@ -7,7 +7,7 @@ import pickle
 import tensorflow as tf
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.models import load_model
-from mistralapi import answer_question
+from .mistralapi import answer_question
 
 app = Flask(__name__)
 CORS(app)  # Allow cross-origin requests
