@@ -112,7 +112,7 @@ export default function PostDashboard() {
 
     async function fetchCategory(postTitle) {
       try {
-        const response = await fetch("https://reddify-backend.onrender.com/predict", {
+        const response = await fetch("http://localhost:5000/predict", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ post_title: postTitle }),
@@ -132,7 +132,7 @@ export default function PostDashboard() {
 
     async function fetchSentiment(postTitle) {
       try {
-        const response = await fetch("https://reddify-backend.onrender.com/predict-sentiment", {
+        const response = await fetch("http://localhost:5000/predict-sentiment", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ post_title: postTitle }),
